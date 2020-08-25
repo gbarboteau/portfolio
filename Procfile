@@ -1,0 +1,1 @@
+web: gunicorn gbarboteau_portfolio.wsgi

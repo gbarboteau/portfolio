@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Freelancer - Start Bootstrap Theme</title>
+        {% load static %}
+        <!-- Favicon-->
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'portfolio/css/bootstrap/core.css' %}" type="text/css" rel="stylesheet" />
+        <link href="{% static 'portfolio/css/my_template.css' %}" type="text/css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center" style="background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url({% static 'portfolio/images/bkg.jpg' %});">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-3" src="{% static 'portfolio/images/doe-reverse.png' %}" alt="" />
+                <!-- Masthead Heading-->
+                <h1 class="text-uppercase mb-3 my-title">Gabrielle Barboteau</h1>
+                <!-- Icon Divider-->
+                <!-- <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div> -->
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Développeuse Full-stack</p>
+            </div>
+        </header>
+
+        <!-- Portfolio Section-->
+        <section class="page-section portfolio bg-whity" id="portfolio">
+            <div class="container">
+                <!-- Portfolio Section Heading-->
+                <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0 my-title">Projets réalisés</h3>
+                <!-- Icon Divider-->
+                <!-- <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div> -->
+                <div class="more-padding-top more-padding-bottom"></div>
+                <!-- Portfolio Grid Items-->
+                <div class="row">
+                    <!-- Portfolio Item 1-->
+                    <div class="card-columns">
+                      {% for project in projects %}
+                      <div class="card">
+                        <a href="{{ project.link }}"><img class="card-img-top" src="{{ MEDIA_URL }}{{ project.picture.url }}"></a>
+                        
+                        <div class="card-body">
+                          <h5 class="card-title">{{ project.title }}</h5>
+                          <p class="card-text">{% autoescape off %}{{ project.description }}{% endautoescape %}</p>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section-->
+        <section class="page-section bg-secondary text-black mb-0" id="contact">
+            <div class="container">
+                <!-- Contact Section Heading-->
+                <h3 class="page-section-heading text-center text-white text-uppercase mb-0 my-title">Blog</h3>
+                <div class="more-padding-top more-padding-bottom"></div>
+                <!-- Contact Section Form-->
+                <div class="row d-flex align-items-stretch">
+                  <!-- Portfolio Item 1-->
+                  {% for article in articles %}
+                    <div class="col-12  col-lg-6">
+                        <div class="card text-black ">
+                          <a href="blog/{{ article.url }}"><img class="card-img-top" src="{{ MEDIA_URL }}{{ article.picture.url }}"></a>
+                          
+                          <div class="card-body text-black">
+                            <h5 class="card-title text-black"><a href="blog/{{ article.url }}" style="color: inherit;">{{ article.title }}</a></h5>
+                            <p class="card-text text-black">{% autoescape off %}{{ article.description }}{% endautoescape %}</p>
+                          </div>
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="more-padding-top more-padding-bottom"></div>
+                <h4 class="text-center mb-0 text-white"><a href="/blog" style="color:inherit;">Accéder à tous les articles &rarr;</a></h4>
+            </div>
+        </section>
+
+
+        <!-- About Section-->
+        <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container">
+                <!-- About Section Heading-->
+                <h3 class="page-section-heading text-center text-uppercase text-white mb-0 my-title">A propos de moi</h3>
+                <div class="more-padding-top more-padding-bottom"></div>
+                <!-- About Section Content-->
+                <div class="row">
+                    <div class="col-sm-4">a</div>
+                    <div class="col-sm-8">Je suis une développeuse full-stack résidant à Paris avec un amour dévorant pour Python, autant intéressée par la conception et la réalisation technique que par l'impact que mon travail peut avoir autour de moi.</p>
+
+                    <p>Avant cela, je fus développeuse de jeux vidéo, journaliste, et formatrice. Désormais, je m'aventure dans le développement web afin de concilier mon amour de l'artisanat du code et mon envie d'avoir un impact positif sur le monde : mon dernier projet, Trans-sport, illustre parfaitement cela.</p>
+
+                    <p>Suite à l'obtention de mon diplome de développeuse d'applications Python chez Openclassrooms, je cherche un emploi en région parisienne. Mes compétences sont très variées : je maitrise autant les frameworks web pour Python (Django, Flask) que Bootstrap et SQL, et je suis capable de gérer le cycle de vie d'une application de A à Z (de la conception initiale au déploiement, en passant par la réalisation technique et la maintenance). Pour plus de détail sur mes précédentes expériences, <a href="https://twitter.com/GBarboteau" style="color: #512b58;">consultez mon CV</a> !</p>
+
+                    <p>Quand je ne code pas, j'aime cuisiner, l'art contemporain, et m'impliquer dans les causes qui me sont chères (comme les droits de la communauté LGBT).</p>
+                  </div>
+                
+                
+            </div>
+        </section>
+        
+        <!-- Footer-->
+        <footer class="footer text-center bg-whity">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase text-dark mb-4">Mes réseaux</h4>
+                        <a class="btn btn-outline-dark btn-social mx-1" href="https://twitter.com/GBarboteau"><i class="fab fa-fw fa-twitter"></i></a>
+                        <a class="btn btn-outline-dark btn-social mx-1" href="https://www.linkedin.com/in/gabrielle-barboteau-b960a927/"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-dark btn-social mx-1" href="https://github.com/gbarboteau"><i class="fab fa-github"></i></a>
+                    </div>
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase text-dark mb-4"><a href="mailto:g.barboteau@gmail.com" style="color:inherit;"> Contactez-moi</a></h4>
+                        <a class="btn btn-outline-dark btn-social mx-1" href="mailto:g.barboteau@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+        <!-- Copyright Section-->
+        <div class="copyright py-4 text-center text-white bg-secondary">
+            <div class="container">
+              <div class="row">
+                <div class="col-0 col-lg-8 mb-5 mb-lg-0"></div>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                  <small>Copyright © Gabrielle Barboteau 2020</small>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
+        <div class="scroll-to-top d-lg-none position-fixed">
+            <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a>
+        </div>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Contact form JS-->
+        <script src="{% static 'portfolio/mail/jqBootstrapValidation.js' %}"></script>
+        <script src="{% static 'portfolio/mail/contact_me.js' %}"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'portfolio/js/bootstrap/scripts.js' %}"></script>
+    </body>
+</html>
