@@ -36,6 +36,8 @@ AWS_S3_REGION_NAME = 'eu-west-3'
 AWS_S3_ENDPOINT_URL = 'https://s3-eu-west-3.amazonaws.com'
 
 AWS_DEFAULT_ACL = 'public-read'
+AWS_QUERYSTRING_AUTH = False
+
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -203,11 +205,14 @@ USE_L10N = True
 USE_TZ = True
 
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
@@ -215,7 +220,7 @@ MEDIA_URL = '/media/'
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
-# DEFAULT_FILE_STORAGE = 'ckeditor.backends.s3boto.S3BotoStorage_AllPublic'
+
 
 CKEDITOR_CONFIGS={
   'default': {
