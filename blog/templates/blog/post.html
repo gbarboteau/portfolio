@@ -8,8 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Blog Post - Start Bootstrap Template</title>
+  <title>Gabrielle Barboteau - Développeuse Full-stack</title>
   {% load static %}
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="{% static 'portfolio/images/favicon.ico' %}" />
   <!-- Bootstrap core CSS -->
   <link href="{% static 'blog/css/bootstrap/bootstrap.css' %}" rel="stylesheet">
 
@@ -85,9 +87,7 @@
         <hr>
 
         <!-- Post Content -->
-        <div class="custom-img-fluid img-fluid">
         {% autoescape off %}{{ article.article }} {% endautoescape %}
-        </div>
 
         <hr>
       </div>
