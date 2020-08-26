@@ -44,7 +44,7 @@ AWS_QUERYSTRING_AUTH = False
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
 else:
-    DEBUG = True
+    DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com', 'gabriellebarboteau.herokuapp.com', 'gabriellebarboteau.com', '127.0.0.1', 'localhost']
 
@@ -211,7 +211,6 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -240,7 +239,8 @@ CKEDITOR_CONFIGS={
   },
 }
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
