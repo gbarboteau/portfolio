@@ -14,19 +14,32 @@ import os
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
+AWS_ACCESS_KEY_ID= os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY= os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+# Bucket name
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+# The region of your bucket, more info:
+# http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region
+AWS_S3_REGION_NAME = 'eu-west-3'
+
+# The endpoint of your bucket, more info:
+# http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region
+AWS_S3_ENDPOINT_URL = 'https://s3-eu-west-3.amazonaws.com'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
 else:
-    DEBUG = False
+    DEBUG = True
 
 ALLOWED_HOSTS = ['.herokuapp.com', 'gabriellebarboteau.herokuapp.com', 'gabriellebarboteau.com', '127.0.0.1', 'localhost']
 
@@ -38,6 +51,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'ckeditor',
     'ckeditor_uploader',
+    's3direct',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -111,6 +125,66 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+S3DIRECT_DESTINATIONS = {
+    'portfolio_destination': {
+        # "key" [required] The location to upload file
+        #       1. String: folder path to upload to
+        #       2. Function: generate folder path + filename using a function  
+        'key': 'uploads/portfolio',
+
+        # "auth" [optional] Limit to specfic Django users
+        #        Function: ACL function
+        # 'auth': lambda u: u.is_staff,
+
+        # "allowed" [optional] Limit to specific mime types
+        #           List: list of mime types
+        'allowed': ['image/jpeg', 'image/png', 'image/gif'],
+
+        # "bucket" [optional] Bucket if different from AWS_STORAGE_BUCKET_NAME
+        #          String: bucket name
+        # 'bucket': 'custom-bucket',
+
+        # "endpoint" [optional] Endpoint if different from AWS_S3_ENDPOINT_URL
+        #            String: endpoint URL
+        # 'endpoint': 'custom-endpoint',
+
+        # "region" [optional] Region if different from AWS_S3_REGION_NAME
+        #          String: region name
+        # 'region': 'custom-region', # Default is 'AWS_S3_REGION_NAME'
+
+        # "acl" [optional] Custom ACL for object, default is 'public-read'
+        #       String: ACL
+        # 'acl': 'private',
+
+        # "cache_control" [optional] Custom cache control header
+        #                 String: header
+        # 'cache_control': 'max-age=2592000',
+
+        # "content_disposition" [optional] Custom content disposition header
+        #                       String: header
+        # 'content_disposition': lambda x: 'attachment; filename="{}"'.format(x),
+
+        # "content_length_range" [optional] Limit file size
+        #                        Tuple: (from, to) in bytes
+        # 'content_length_range': (5000, 20000000),
+
+        # "server_side_encryption" [optional] Use serverside encryption
+        #                          String: encrytion standard
+        # 'server_side_encryption': 'AES256',
+
+        # "allow_existence_optimization" [optional] Checks to see if file already exists,
+        #                                returns the URL to the object if so (no upload)
+        #                                Boolean: True, False
+        'allow_existence_optimization': False,
+    },
+    'example_destination_two': {
+        'key': lambda filename, args: args + '/' + filename,
+        'key_args': 'uploads/images',
+    },
+    'blog_destination': {
+        'key': 'uploads/blog',
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -132,7 +206,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"

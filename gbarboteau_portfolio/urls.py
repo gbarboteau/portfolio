@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', include('portfolio.urls')),
     path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-]
+    url(r'^s3direct/', include('s3direct.urls')),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
