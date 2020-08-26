@@ -21,8 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-AWS_ACCESS_KEY_ID= os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY= os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 # Bucket name
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
@@ -34,6 +34,9 @@ AWS_S3_REGION_NAME = 'eu-west-3'
 # The endpoint of your bucket, more info:
 # http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region
 AWS_S3_ENDPOINT_URL = 'https://s3-eu-west-3.amazonaws.com'
+
+AWS_DEFAULT_ACL = 'public-read'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('ENV') == 'PRODUCTION':
@@ -211,6 +214,8 @@ MEDIA_URL = '/media/'
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+# DEFAULT_FILE_STORAGE = 'ckeditor.backends.s3boto.S3BotoStorage_AllPublic'
 
 CKEDITOR_CONFIGS={
   'default': {

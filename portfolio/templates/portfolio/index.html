@@ -79,7 +79,7 @@
                   {% for article in articles %}
                     <div class="col-12  col-lg-6">
                         <div class="card text-black ">
-                          <a href="blog/{{ article.url }}"><img class="card-img-top" src="{{ MEDIA_URL }}{{ article.picture.url }}"></a>
+                          <a href="blog/{{ article.url }}"><img class="card-img-top" src="{{ article.picture }}"></a>
                           
                           <div class="card-body text-black">
                             <h5 class="card-title text-black"><a href="blog/{{ article.url }}" style="color: inherit;">{{ article.title }}</a></h5>
