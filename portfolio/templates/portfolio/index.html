@@ -25,7 +25,7 @@
                 <!-- Masthead Avatar Image-->
                 <img class="masthead-avatar mb-3" src="{% static 'portfolio/images/doe-reverse.png' %}" alt="" />
                 <!-- Masthead Heading-->
-                <h1 class="text-uppercase mb-3 my-title">Gabrielle Barboteau <span class="badge badge-secondary">New</span></h1>
+                <h1 class="text-uppercase mb-3 my-title"><a href="/" style="color: inherit;">Gabrielle Barboteau</a></h1>
                 <!-- Icon Divider-->
                 <!-- <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -58,7 +58,7 @@
                         <a href="{{ project.link }}"><img class="card-img-top" src="{{ project.picture }}"></a>
                         
                         <div class="card-body">
-                          <h5 class="card-title">{{ project.title }}</h5>
+                          <h5 class="card-title"><a href="{{ project.link }}" style="color: inherit;">{{ project.title }}</a></h5>
                           <p class="card-text">{% autoescape off %}{{ project.description }}{% endautoescape %}</p>
                         </div>
                       </div>
@@ -105,12 +105,12 @@
                 <div class="more-padding-top more-padding-bottom"></div>
                 <!-- About Section Content-->
                 <div class="row">
-                    <div class="col-sm-4">a</div>
+                    <div class="col-sm-4 center-block"><img class="img-fluid rounded-circle" src="{% static 'portfolio/images/avatar.png' %}" /></div>
                     <div class="col-sm-8">Je suis une développeuse full-stack résidant à Paris avec un amour dévorant pour Python, autant intéressée par la conception et la réalisation technique que par l'impact que mon travail peut avoir autour de moi.</p>
 
                     <p>Avant cela, je fus développeuse de jeux vidéo, journaliste, et formatrice. Désormais, je m'aventure dans le développement web afin de concilier mon amour de l'artisanat du code et mon envie d'avoir un impact positif sur le monde : mon dernier projet, Trans-sport, illustre parfaitement cela.</p>
 
-                    <p>Suite à l'obtention de mon diplome de développeuse d'applications Python chez Openclassrooms, je cherche un emploi en région parisienne. Mes compétences sont très variées : je maitrise autant les frameworks web pour Python (Django, Flask) que Bootstrap et SQL, et je suis capable de gérer le cycle de vie d'une application de A à Z (de la conception initiale au déploiement, en passant par la réalisation technique et la maintenance). Pour plus de détail sur mes précédentes expériences, <a href="https://twitter.com/GBarboteau" style="color: #512b58;">consultez mon CV</a> !</p>
+                    <p>Suite à l'obtention de mon diplome de développeuse d'applications Python chez Openclassrooms, je cherche un emploi en région parisienne. Mes compétences sont très variées : je maitrise autant les frameworks web pour Python (Django, Flask) que Bootstrap et SQL, et je suis capable de gérer le cycle de vie d'une application de A à Z (de la conception initiale au déploiement, en passant par la réalisation technique et la maintenance). Pour plus de détail sur mes précédentes expériences, <a href="https://www.linkedin.com/in/gabrielle-barboteau-b960a927/" style="color: #512b58;">consultez mon CV</a> !</p>
 
                     <p>Quand je ne code pas, j'aime cuisiner, l'art contemporain, et m'impliquer dans les causes qui me sont chères (comme les droits de la communauté LGBT).</p>
                   </div>
