@@ -30,7 +30,7 @@ button.bg-secondary:focus {
 a.bg-whity:hover, a.bg-whity:focus,
 button.bg-whity:hover,
 button.bg-whity:focus {
-  background-color: #FFFFFF !important;
+  background-color: #79bac1 !important;
 }
 
 .bg-tertiary {
@@ -81,4 +81,3 @@ body{
         column-count: 2;
     }
 }
-
