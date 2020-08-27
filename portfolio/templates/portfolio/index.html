@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="more-padding-top more-padding-bottom"></div>
-                <h4 class="text-center mb-0 text-secondary"><a href="https://github.com/gbarboteau" style="color:inherit;">Accéder à tous mes projets sur Github &rarr;</a></h4>
+                <h4 class="text-center mb-0 text-secondary"><a href="https://github.com/gbarboteau" style="color:inherit;" target="_blank">Accéder à tous mes projets sur Github &rarr;</a></h4>
             </div>
         </section>
 
@@ -83,10 +83,10 @@
                   {% for article in articles %}
                     <div class="col-12  col-lg-6">
                         <div class="card text-black ">
-                          <a href="blog/{{ article.url }}"><img class="card-img-top" src="{{ article.picture }}"></a>
+                          <a href="blog/{{ article.url }}" target="_blank"><img class="card-img-top" src="{{ article.picture }}"></a>
                           
                           <div class="card-body text-black">
-                            <h5 class="card-title text-black"><a href="blog/{{ article.url }}" style="color: inherit;">{{ article.title }}</a></h5>
+                            <h5 class="card-title text-black"><a href="blog/{{ article.url }}" style="color: inherit;" target="_blank">{{ article.title }}</a></h5>
                             <p class="card-text text-black">{% autoescape off %}{{ article.description }}{% endautoescape %}</p>
                           </div>
                         </div>
@@ -95,7 +95,7 @@
                     {% endfor %}
                 </div>
                 <div class="more-padding-top more-padding-bottom"></div>
-                <h4 class="text-center mb-0 text-white"><a href="/blog" style="color:inherit;">Accéder à tous les articles &rarr;</a></h4>
+                <h4 class="text-center mb-0 text-white"><a href="/blog" style="color:inherit;" target="_blank">Accéder à tous les articles &rarr;</a></h4>
             </div>
         </section>
 
