@@ -44,9 +44,9 @@ AWS_QUERYSTRING_AUTH = False
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
 else:
-    DEBUG = False
+    DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'gabriellebarboteau.herokuapp.com', 'gabriellebarboteau.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.herokuapp.com', 'gabriellebarboteau.herokuapp.com', 'gabriellebarboteau.com', 'www.gabriellebarboteau.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -131,55 +131,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 S3DIRECT_DESTINATIONS = {
-    'portfolio_destination': {
-        # "key" [required] The location to upload file
-        #       1. String: folder path to upload to
-        #       2. Function: generate folder path + filename using a function  
+    'portfolio_destination': { 
         'key': 'uploads/portfolio',
-
-        # "auth" [optional] Limit to specfic Django users
-        #        Function: ACL function
-        # 'auth': lambda u: u.is_staff,
-
-        # "allowed" [optional] Limit to specific mime types
-        #           List: list of mime types
         'allowed': ['image/jpeg', 'image/png', 'image/gif'],
-
-        # "bucket" [optional] Bucket if different from AWS_STORAGE_BUCKET_NAME
-        #          String: bucket name
-        # 'bucket': 'custom-bucket',
-
-        # "endpoint" [optional] Endpoint if different from AWS_S3_ENDPOINT_URL
-        #            String: endpoint URL
-        # 'endpoint': 'custom-endpoint',
-
-        # "region" [optional] Region if different from AWS_S3_REGION_NAME
-        #          String: region name
-        # 'region': 'custom-region', # Default is 'AWS_S3_REGION_NAME'
-
-        # "acl" [optional] Custom ACL for object, default is 'public-read'
-        #       String: ACL
-        # 'acl': 'private',
-
-        # "cache_control" [optional] Custom cache control header
-        #                 String: header
-        # 'cache_control': 'max-age=2592000',
-
-        # "content_disposition" [optional] Custom content disposition header
-        #                       String: header
-        # 'content_disposition': lambda x: 'attachment; filename="{}"'.format(x),
-
-        # "content_length_range" [optional] Limit file size
-        #                        Tuple: (from, to) in bytes
-        # 'content_length_range': (5000, 20000000),
-
-        # "server_side_encryption" [optional] Use serverside encryption
-        #                          String: encrytion standard
-        # 'server_side_encryption': 'AES256',
-
-        # "allow_existence_optimization" [optional] Checks to see if file already exists,
-        #                                returns the URL to the object if so (no upload)
-        #                                Boolean: True, False
         'allow_existence_optimization': False,
     },
     'example_destination_two': {
@@ -227,6 +181,7 @@ CKEDITOR_CONFIGS={
     'height': 300,
     'width': 900,
     'extraPlugins': 'codesnippet',
+    "removePlugins": "stylesheetparser",
     'toolbar_Custom': [
         ["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo", 'NumberedList', 'BulletedList',], 
         ["Link", "Unlink", "Anchor"], 
